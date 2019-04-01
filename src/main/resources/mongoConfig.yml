@@ -1,0 +1,7 @@
+  mongo:
+    image: mongo
+    restart: always
+    command: mongod --port 8081
+    ports:
+      - 8081:8081
+    
