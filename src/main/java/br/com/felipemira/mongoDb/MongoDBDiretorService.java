@@ -14,6 +14,9 @@ import br.com.felipemira.model.Diretor;
 import br.com.felipemira.repository.DiretorRepository;
 import br.com.felipemira.service.DiretorService;
 
+/***
+ * @author felipe.mira.ext 01/04/2019
+ */
 @Service
 public final class MongoDBDiretorService implements DiretorService {
 	

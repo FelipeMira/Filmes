@@ -1,4 +1,4 @@
-package br.com.felipemira.actions;
+package br.com.felipemira.utils;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/***
+ * @author felipe.mira.ext 01/04/2019
+ */
 public final class ValidationErrorDTO {
 	private final List<FieldErrorDTO> fieldErrors = new ArrayList<>();
 

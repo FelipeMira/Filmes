@@ -1,10 +1,8 @@
 package br.com.felipemira.dto;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
 import br.com.felipemira.model.Diretor;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
@@ -12,10 +10,12 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @SuppressWarnings("deprecation")
-public class DiretorDTO {
+public class FilmeDTO {
 
 	private String id;
 
@@ -27,9 +27,9 @@ public class DiretorDTO {
 	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	@JsonSerialize(using = LocalDateSerializer.class)
 	@JsonDeserialize(using = LocalDateDeserializer.class)
-	@ApiModelProperty(value="Data de nascimento, Ex.:2018-09-05.", position=2)
+	@ApiModelProperty(value="Data de lançamento, Ex.:2018-09-05.", position=2)
 	@NotNull
-	private LocalDate nascimento;
+	private LocalDate lancamento;
 
 	public String getId() {
 		return id;
@@ -40,12 +40,12 @@ public class DiretorDTO {
 		this.id = id;
 	}
 
-	public LocalDate getNascimento() {
-		return nascimento;
+	public LocalDate getLancamento() {
+		return lancamento;
 	}
 
-	public void setNascimento(LocalDate nascimento) {
-		this.nascimento = nascimento;
+	public void setLancamento(LocalDate lancamento) {
+		this.lancamento = lancamento;
 	}
 
 	public String getNome() {
@@ -58,9 +58,9 @@ public class DiretorDTO {
 
 	@Override
 	public String toString() {
-		return "DiretorDTO{" +
+		return "FilmeDTO{" +
 				"id='" + id + '\'' +
-				", nascimento=" + nascimento +
+				", lancamento=" + lancamento +
 				", nome='" + nome + '\'' +
 				'}';
 	}

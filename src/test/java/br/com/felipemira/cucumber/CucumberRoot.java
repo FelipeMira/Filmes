@@ -22,6 +22,9 @@ import org.springframework.util.MultiValueMap;
 import lombok.Getter;
 import lombok.Setter;
 
+/***
+ * @author felipe.mira.ext 01/04/2019
+ */
 @SpringBootTest(classes = FilmesApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles(profiles={"test", "qa"}, resolver=ProfilesResolver.class)
 @ContextConfiguration
@@ -43,8 +46,10 @@ public class CucumberRoot {
 
     protected MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
 
+    /**
+     * Prepara o RestTemplate para o teste
+     */
     public void before() {
-        //Passo sempre o token para acesso.
         if(headers.isEmpty()) {
             addHeader();
         }
@@ -55,10 +60,19 @@ public class CucumberRoot {
         }));
     }
 
+    /**
+     * Verifica a porta utilizada no momento pela automacao
+     * @return String
+     */
     public String getPort() {
         return environment.getProperty("local.server.port");
     }
 
+    /**
+     * Prepara a url para a chamada no TestRestTemplate
+     * @param string url
+     * @return String
+     */
     public String getParamsToUrl(String string) {
         String paramString = URLEncodedUtils.format(params, "utf-8");
         String finalUrl = "";
@@ -78,18 +92,32 @@ public class CucumberRoot {
         params.add(new BasicNameValuePair(chave, valor));
     }
 
+    /**
+     * Limpa os parametros
+     */
     public void clearParams() {
         params.clear();
     }
 
+    /**
+     * retorna os headers setados para o momento da chamada
+     * @return MultiValueMap<String, String>
+     */
     public MultiValueMap<String, String> getHeaders() {
         return this.headers;
     }
 
+    /**
+     * Adiciona o parametro que aceita o retorno json nas chamadas efetuadas pelo TestRestTemplate
+     */
     private void addHeader() {
         this.headers.add("Accept", "application/json");
     }
 
+    /**
+     * Seta parametros passados para o Header
+     * @param headers MultiValueMap<String, String> headers
+     */
     public void setHeaders(MultiValueMap<String, String> headers) {
         this.headers.clear();
         addHeader();
@@ -98,40 +126,48 @@ public class CucumberRoot {
         System.out.println("Adicionando parametros no header: " + "</br> " + "- Headers: " + getHeaders().toString());
     }
 
+    /**
+     * Retorna o Response da chamada
+     * @return ResponseEntity<?>
+     */
     public static ResponseEntity<?> getResponse() {
         return response;
     }
 
+    /**
+     * Seta o response apos alguma chamada efetuada
+     * @param response ResponseEntity<?>
+     */
     public static void setResponse(ResponseEntity<?> response) {
         System.out.println("Resposta: " + response.toString());
         CucumberRoot.response = response;
     }
 
+    /**
+     * Valida um o status code da chamada efetuada
+     * @param statusCode Integer
+     */
     public void getStatusCode(Integer statusCode) {
         HttpStatus currentStatusCode = getResponse().getStatusCode();
         assert(currentStatusCode.value() == statusCode);
         System.out.println("Retorno do Status Code <br>-Esperado: " + statusCode + "<br>-Retornado: " + currentStatusCode.value());
     }
 
+    /**
+     * Valida dois status code, se o retorno da chamada for igual a algum deles o retorno sera true
+     * @param statusCode int
+     * @param statusCodeTwo int
+     */
     public void getStatusCode(int statusCode, int statusCodeTwo) {
         HttpStatus currentStatusCode = getResponse().getStatusCode();
         assert(currentStatusCode.value() == statusCode || currentStatusCode.value() == statusCodeTwo);
         System.out.println("Retorno do Status Code <br>-Esperado: " + (currentStatusCode.value() == statusCode? statusCode : statusCodeTwo) + "<br>-Retornado: " + currentStatusCode.value());
     }
 
-    @SuppressWarnings("static-access")
-    public void callGetErrorString(String finalUrl) {
-        String url = urlLocal.concat(getPort() + getParamsToUrl(finalUrl));
-        System.out.println("Url: " + url);
-        try {
-            this.setResponse(this.template.getForEntity(url, String.class));
-            System.out.println("Consulta realizada");
-            System.out.println("Body retornado: " + getResponse().getBody());
-        }catch(Exception ex) {
-            System.out.println("Consulta não realizada: <br><br>" + ex.getMessage());
-        }
-    }
-
+    /**
+     * Seta o log com a chamada realizada
+     * @param condition boolean
+     */
     public static void logChamadaRealizada(Boolean condition) {
         if(condition) {
             System.out.println("Consulta realizada");
@@ -142,6 +178,9 @@ public class CucumberRoot {
         }
     }
 
+    /**
+     * Espera cinco segundos
+     */
     public void esperarUmPouco() {
         try {
             Thread.sleep(5000L);

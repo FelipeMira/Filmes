@@ -11,7 +11,9 @@ import java.util.stream.Stream;
 import static java.time.DayOfWeek.SATURDAY;
 import static java.time.DayOfWeek.SUNDAY;
 
-
+/***
+ * @author felipe.mira.ext 01/04/2019
+ */
 public class DateFormatUtils {
 	
 	public static String toISO8601UTC(Date date) {

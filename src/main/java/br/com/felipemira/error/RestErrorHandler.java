@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+/***
+ * @author felipe.mira.ext 01/04/2019
+ */
 public final class RestErrorHandler {
 	private final MessageSource messageSource;
 

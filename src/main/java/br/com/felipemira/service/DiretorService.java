@@ -4,6 +4,9 @@ import java.util.List;
 
 import br.com.felipemira.dto.DiretorDTO;
 
+/***
+ * @author felipe.mira.ext 01/04/2019
+ */
 public interface DiretorService {
 	
 	DiretorDTO create(DiretorDTO diretor);

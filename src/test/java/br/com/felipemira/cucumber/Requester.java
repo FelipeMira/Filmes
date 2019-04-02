@@ -1,10 +1,10 @@
 package br.com.felipemira.cucumber;
 
-import br.com.felipemira.actions.CommonsMethods;
+import br.com.felipemira.utils.CommonsMethods;
 import br.com.felipemira.enums.AppHost;
 import lombok.Getter;
 import lombok.Setter;
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;

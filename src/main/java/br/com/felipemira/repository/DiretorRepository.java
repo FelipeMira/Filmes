@@ -6,6 +6,9 @@ import java.util.Optional;
 import br.com.felipemira.model.Diretor;
 import org.springframework.data.repository.Repository;
 
+/***
+ * @author felipe.mira.ext 01/04/2019
+ */
 public interface DiretorRepository extends Repository<Diretor, String> {
 	 
     void delete(Diretor deleted);

@@ -1,31 +1,29 @@
 package br.com.felipemira.model;
 
-import static util.PreCondition.isTrue;
-import static util.PreCondition.notEmpty;
-import static util.PreCondition.notNull;
-
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDate;
 
+import static util.PreCondition.*;
+
 /***
  * @author felipe.mira.ext 01/04/2019
  */
-public final class Diretor {
+public final class Filme {
 
     public static final int MAX_LENGTH_NOME = 100;
-    
+
 	@Id
     private String id;
 	private String nome;
-	private LocalDate nascimento;
-	
-	public Diretor() {}
-	
-	public Diretor(Builder builder) {
+	private LocalDate lancamento;
+
+	public Filme() {}
+
+	public Filme(Builder builder) {
 		super();
 		this.nome = builder.nome;
-		this.nascimento = builder.nascimento;
+		this.lancamento = builder.lancamento;
 	}
 	
 	public static Builder getBuilder() {
@@ -40,23 +38,27 @@ public final class Diretor {
 		return nome;
 	}
 
-	public LocalDate getNascimento() {
-		return nascimento;
+	public LocalDate getLancamento() {
+		return lancamento;
 	}
 
 	
-   public void update(String nome, LocalDate nascimento) {
-	   checkObject(nome, nascimento);
+   public void update(String nome, LocalDate lancamento) {
+	   checkObject(nome, lancamento);
 
         this.nome = nome;
-        this.nascimento = nascimento;
+        this.lancamento = lancamento;
     }
 
 
+	/**
+     * We don't have to use the builder pattern here because the constructed class has only two String fields.
+     * However, I use the builder pattern in this example because it makes the code a bit easier to read.
+     */
     public static class Builder {
 
         private String nome;
-        private LocalDate nascimento;
+        private LocalDate lancamento;
 
         private Builder() {}
 
@@ -65,21 +67,21 @@ public final class Diretor {
             return this;
         }
 
-        public Builder nascimento(LocalDate nascimento) {
-            this.nascimento = nascimento;
+        public Builder lancamento(LocalDate lancamento) {
+            this.lancamento = lancamento;
             return this;
         }
 
-        public Diretor build() {
-            Diretor build = new Diretor(this);
+        public Filme build() {
+            Filme build = new Filme(this);
 
-            build.checkObject(build.getNome(), build.getNascimento());
+            build.checkObject(build.getNome(), build.getLancamento());
 
             return build;
         }
     }
 
-    private void checkObject(String nome, LocalDate nascimento) {
+    private void checkObject(String nome, LocalDate lancamento) {
         notNull(nome, "Nome não pode ser nulo");
         notEmpty(nome, "Nome não pode estar vazio");
         isTrue(nome.length() <= MAX_LENGTH_NOME,
@@ -87,6 +89,6 @@ public final class Diretor {
                 MAX_LENGTH_NOME
         );
 
-        notNull(nascimento, "Nascimento não pode ser nulo");
+        notNull(lancamento, "lancamento não pode ser nulo");
     }
 }

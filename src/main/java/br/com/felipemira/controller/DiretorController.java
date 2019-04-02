@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.felipemira.error.NotFoundException;
 import br.com.felipemira.service.DiretorService;
 
+/***
+ * @author felipe.mira.ext 01/04/2019
+ */
 @RestController
 @RequestMapping("/api/diretor")
 public class DiretorController {
@@ -51,7 +54,8 @@ public class DiretorController {
     }
  
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
-    DiretorDTO update(@RequestBody @Valid DiretorDTO diretorEntry) {
+    DiretorDTO update(@PathVariable("id") String id, @RequestBody @Valid DiretorDTO diretorEntry) {
+        diretorEntry.setId(id);
         return service.update(diretorEntry);
     }
  
