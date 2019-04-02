@@ -10,5 +10,5 @@ import cucumber.api.junit.Cucumber;
         tags = {"@teste_api"},
         format = {"pretty", "html:target/reports/cucumber/html",
         "json:target/cucumber.json", "usage:target/usage.jsonx", "junit:target/junit.xml"})
-public class CucumberIntegrationIT {
+public class CucumberDiretor {
 }
