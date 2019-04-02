@@ -7,6 +7,7 @@ import br.com.felipemira.enums.AppHost;
 import com.github.javafaker.Faker;
 import lombok.Getter;
 import lombok.Setter;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -28,7 +29,7 @@ public class ActionDiretor extends CucumberRoot {
     /**
      * Cria um diretor aleatorio com a data de nascimento fixa
      */
-    private void criarDiretor(){
+    private void criarDiretor() throws JSONException {
         diretorPostJson = new JSONObject();
         diretorPostJson.put("nascimento", "1990-01-25");
         diretorPostJson.put("nome", faker.name().firstName() + " " + faker.name().lastName());
@@ -37,7 +38,7 @@ public class ActionDiretor extends CucumberRoot {
     /**
      * Faz a chamada na api de diretores
      */
-    public void postDiretor() {
+    public void postDiretor() throws JSONException {
         criarDiretor();
         requester.postApi(AppHost.Local, ConstantPaths.PATH_DIRETOR, diretorPostJson, true, "Salvar Diretor!");
     }

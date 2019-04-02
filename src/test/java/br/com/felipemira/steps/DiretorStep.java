@@ -12,7 +12,7 @@ public class DiretorStep extends CucumberRoot {
     ActionDiretor actionDiretor;
 
     @Dado("^Que quero testar o retorno do diretror$")
-    public void que_quero_testar_o_retorno_do_diretror() {
+    public void que_quero_testar_o_retorno_do_diretror() throws Exception {
         actionDiretor.postDiretor();
     }
 

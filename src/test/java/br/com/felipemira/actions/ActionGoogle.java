@@ -7,6 +7,7 @@ import br.com.felipemira.enums.AppHost;
 import lombok.Getter;
 import lombok.Setter;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -28,7 +29,7 @@ public class ActionGoogle extends CucumberRoot {
     @Getter@Setter
     private String parametroPesquisa;
 
-    public void informarPesquisa() {
+    public void informarPesquisa() throws JSONException {
         requester.getApi(AppHost.Local, ConstantPaths.PATH_DIRETOR_E_FILME, true, "Consultar diretor e Filme!");
 
         JSONArray diretoresEFilmes = new JSONArray(Objects.requireNonNull(getResponse().getBody().toString()));

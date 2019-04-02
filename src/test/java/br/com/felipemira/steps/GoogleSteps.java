@@ -13,7 +13,7 @@ public class GoogleSteps extends CucumberRoot {
     ActionGoogle actionGoogle;
 
     @Quando("^Informo o parametro da pesquisa$")
-    public void informoOParametroDaPesquisa() {
+    public void informoOParametroDaPesquisa() throws Exception {
         actionGoogle.informarPesquisa();
     }
 
