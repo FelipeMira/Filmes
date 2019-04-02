@@ -1,12 +1,11 @@
 package br.com.felipemira.steps;
 
 import br.com.felipemira.cucumber.CucumberRoot;
-import cucumber.api.PendingException;
-import cucumber.api.java.pt.Dado;
+import cucumber.api.java.pt.E;
 import cucumber.api.java.pt.Entao;
-import cucumber.api.java.pt.Quando;
 import org.springframework.http.HttpStatus;
 
+import static br.com.felipemira.ui.automator.utils.core.Selenium.resetDriver;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -19,4 +18,8 @@ public class GlobalSteps extends CucumberRoot {
     }
 
 
+    @E("^reseto o webDriver$")
+    public void resetoOWebDriver() {
+        resetDriver();
+    }
 }

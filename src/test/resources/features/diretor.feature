@@ -12,3 +12,4 @@ Funcionalidade: Chamada na api de diretor
     Quando Informo o parametro da pesquisa
     E Clico em Pesquisar
     Entao Valido quantos resultados foram obtidos
+    E reseto o webDriver

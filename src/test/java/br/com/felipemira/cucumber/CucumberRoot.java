@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import br.com.felipemira.FilmesApplication;
+import br.com.felipemira.ui.automator.utils.core.Selenium;
+import br.com.felipemira.ui.automator.utils.po.GooglePage;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
@@ -45,6 +47,12 @@ public class CucumberRoot {
     private static List<NameValuePair> params = new LinkedList<>();
 
     protected MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
+
+    @Autowired
+    @Getter@Setter
+    private Selenium selenium;
+
+    protected static GooglePage googlePage;
 
     /**
      * Prepara o RestTemplate para o teste
@@ -176,6 +184,19 @@ public class CucumberRoot {
             System.out.println("Consulta não realizada: <br><br>");
             System.out.println("-Body retornado: " + getResponse().getBody());
         }
+    }
+
+    /**
+     * Faz a chamada do WebDriver e coloca a pagina do Google para a navegacao
+     */
+    public void prepararWebDriverGoogle() {
+        selenium.getDriver();
+
+        Selenium.driver.get("http://www.google.com.br");
+        // setting browser window size
+        Selenium.driver.manage().window().maximize();
+
+        googlePage = new GooglePage();
     }
 
     /**

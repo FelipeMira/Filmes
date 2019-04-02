@@ -3,12 +3,8 @@ package br.com.felipemira.steps;
 import br.com.felipemira.actions.ActionDiretor;
 import br.com.felipemira.cucumber.CucumberRoot;
 import cucumber.api.java.pt.Dado;
-import cucumber.api.java.pt.E;
-import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import static br.com.felipemira.ui.automator.utils.core.Selenium.resetDriver;
 
 public class DiretorStep extends CucumberRoot {
 
@@ -31,22 +27,6 @@ public class DiretorStep extends CucumberRoot {
     }
 
 
-
-    @Quando("^Informo o parametro da pesquisa$")
-    public void informoOParametroDaPesquisa() {
-        actionDiretor.informarPesquisa();
-    }
-
-    @E("^Clico em Pesquisar$")
-    public void clicoEmPesquisar() {
-        actionDiretor.pesquisar();
-    }
-
-    @Entao("^Valido quantos resultados foram obtidos$")
-    public void validoQuantosResultadosForamObtidos() {
-        actionDiretor.validarRetornoPesquisaGoogle();
-        resetDriver();
-    }
 
 
 }
