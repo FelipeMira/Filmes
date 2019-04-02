@@ -14,7 +14,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
-@SuppressWarnings("deprecation")
 public class DiretorDTO {
 
 	private String id;

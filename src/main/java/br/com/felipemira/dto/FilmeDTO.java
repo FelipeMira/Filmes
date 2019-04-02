@@ -14,7 +14,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
-@SuppressWarnings("deprecation")
 public class FilmeDTO {
 
 	private String id;

@@ -1,10 +1,16 @@
 package br.com.felipemira.controller;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import br.com.felipemira.dto.DiretorDTO;
+import br.com.felipemira.model.Diretor;
+import br.com.felipemira.model.DiretorEFilme;
+import br.com.felipemira.model.Filme;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -1,3 +1,7 @@
 api:
   url:
     local: "http://localhost:"
+
+selenium:
+  browser:
+    name: "chrome"

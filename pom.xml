@@ -17,6 +17,7 @@
 		<!-- Configure the main class of our Spring Boot application -->
 		<start-class>br.com.felipemira.FilmesApplication</start-class>
 		<cucumber-version>1.2.5</cucumber-version>
+		<selenium.version>3.14.0</selenium.version>
 	</properties>
 
 	<!-- Inherit defaults from Spring Boot -->
@@ -126,6 +127,26 @@
 			<artifactId>javafaker</artifactId>
 			<version>0.14</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-remote-driver</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-server</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>27.1-jre</version>
 		</dependency>
 	</dependencies>
 

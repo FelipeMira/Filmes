@@ -181,7 +181,7 @@ public class CucumberRoot {
     /**
      * Espera cinco segundos
      */
-    public void esperarUmPouco() {
+    public static void esperarUmPouco() {
         try {
             Thread.sleep(5000L);
         } catch (InterruptedException e) {
