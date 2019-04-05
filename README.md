@@ -3,11 +3,11 @@
 ### API
 
 Dentro da pasta 'main/java' está uma API produzida com Spring, MongoDB e documentação SpringFox.
-Tomei a liberdade de fazer tudo utilizando containers.
+Fiz tudo utilizando containers.
 
 ### Testes
 
-Dentro da pasta 'main/test' estão os testes solicitados, adicionei um teste com Cucumber e TestRestTemplate.
+Dentro da pasta 'main/test' estão os testes, adicionei um teste com Cucumber e TestRestTemplate.
 
 ### Build e Deploy no Play With Docker
 
