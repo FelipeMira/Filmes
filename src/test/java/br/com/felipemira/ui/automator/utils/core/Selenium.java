@@ -8,6 +8,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -58,14 +59,20 @@ public class Selenium {
 		String pathDriver = System.getProperty("user.dir") + "/src/test/java/br/com/felipemira/ui/automator/utils/driver/";
 		if (driver == null) {
 			if (borwserName.equals("chrome")) {
+				ChromeOptions chromeOptions = new ChromeOptions();
+				chromeOptions.addArguments("--headless");
 				if (os.contains("windows")) {
 					File file = new File(pathDriver + "windows/chromedriver.exe");
 					System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-					driver = new ChromeDriver();
+					driver = new ChromeDriver(chromeOptions);
 				} else if (os.contains("mac")) {
 					File file = new File(pathDriver + "mac/chromedriver");
 					System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-					driver = new ChromeDriver();
+					driver = new ChromeDriver(chromeOptions);
+				} else if(os.contains("linux")){
+					File file = new File(pathDriver + "mac/chromedriver");
+					System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
+					driver = new ChromeDriver(chromeOptions);
 				}
 			} else if (borwserName.equals("ie")) {
 				DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();

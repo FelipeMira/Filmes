@@ -1,4 +1,5 @@
 # language: pt
+@teste_diretor
 Funcionalidade: Chamada na api de diretor
   @teste_api
   Cenario: Client ira chamar a api GET de diretor
