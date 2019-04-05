@@ -15,6 +15,8 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -23,6 +25,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
+import java.lang.ref.PhantomReference;
 import java.time.Duration;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
@@ -69,10 +72,25 @@ public class Selenium {
 					File file = new File(pathDriver + "mac/chromedriver");
 					System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 					driver = new ChromeDriver(chromeOptions);
-				} else if(os.contains("linux")){
+				} else if (os.contains("linux")) {
 					File file = new File(pathDriver + "linux/chromedriver");
 					System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 					driver = new ChromeDriver(chromeOptions);
+				}
+
+			}else if(borwserName.equals("phantomjs")){
+				DesiredCapabilities caps = new DesiredCapabilities();
+				caps.setCapability("takesScreenshot", true);
+				if (os.contains("windows")) {
+
+				} else if (os.contains("mac")) {
+					File file = new File(pathDriver + "mac/phantomjs");
+					caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, file.getAbsolutePath());
+					driver = new PhantomJSDriver(caps);
+				} else if (os.contains("linux")) {
+					File file = new File(pathDriver + "linux/phantomjs");
+					caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, file.getAbsolutePath());
+					driver = new PhantomJSDriver(caps);
 				}
 			} else if (borwserName.equals("ie")) {
 				DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
