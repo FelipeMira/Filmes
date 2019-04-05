@@ -70,7 +70,7 @@ public class Selenium {
 					System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 					driver = new ChromeDriver(chromeOptions);
 				} else if(os.contains("linux")){
-					File file = new File(pathDriver + "mac/chromedriver");
+					File file = new File(pathDriver + "linux/chromedriver");
 					System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 					driver = new ChromeDriver(chromeOptions);
 				}
